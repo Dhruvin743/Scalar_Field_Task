@@ -1,65 +1,62 @@
 import React from "react";
 
-function NewsCard({ bigCard = true }) {
+function NewsCard({
+	bigCard = true,
+	IMG_URL,
+	IMG_ALT = "img alt",
+	DESCRIPTION = "description",
+	AUTHOR_IMG,
+	AUTHOR_NAME = "author",
+}) {
 	return (
 		<div className={`${bigCard ? "col-span-3" : "col-span-1"}`}>
 			<a className='block h-full outline-none' href='/page/china-has-the-most-powerful-la-18f6BgzXSUyzWSmGigD6CA'>
-				<div className=' h-full rounded-lg duration-150 hover:opacity-95 bg-[#f4f4ef]'>
+				<div className='h-full rounded-lg duration-150 hover:opacity-90 bg-offset dark:bg-offsetDark md:hover:-translate-y-px'>
 					<div className=' flex h-full flex-col items-center'>
 						<div
 							className={`flex w-full shrink-0 overflow-hidden rounded-t-lg ${
 								bigCard ? "md:aspect-[1036/350]" : "md:aspect-[3/2]"
 							} aspect-[4/3]`}
 						>
-							<img
-								alt='China Has the Most Powerful Laser'
-								className='h-full w-full object-cover transition-all ease-in-out'
-								src='https://pplx-res.cloudinary.com/image/upload/t_limit/v1728253705/user_uploads/ngcwujsrn/china-lazer.jpg'
-							/>
+							<img alt={IMG_ALT} className='h-full w-full object-cover transition-all ease-in-out' src={IMG_URL} />
 						</div>
 						<div className='flex h-auto w-full grow transform-gpu flex-col p-4'>
 							<div>
 								<div className='flex items-center gap-x-2'>
-									<div className={`grow font-display ${bigCard ? "text-lg" : "text-base"} font-medium text-black`}>
+									<div
+										className={`grow font-display ${
+											bigCard ? "text-lg" : "text-base"
+										} font-medium text-textMain dark:text-textMainDark selection:text-textMain selection:bg-super/50 dark:selection:text-superDark dark:selection:bg-superDuper/10`}
+									>
 										<div data-testid='thread-title' className='leading-[1.4]'>
-											China Has the Most Powerful Laser
+											{IMG_ALT}
 										</div>
 									</div>
 								</div>
 								<div
 									className={`break-word mt-2 line-clamp-2 text-balance font-sans ${
 										bigCard ? "text-base" : "text-sm"
-									} text-black`}
+									} text-black/60 dark:text-white/50 selection:text-textMain selection:bg-super/50 dark:selection:text-superDark dark:selection:bg-superDuper/10`}
 								>
-									Chinese scientists have achieved a breakthrough in laser technology with the development of the
-									world's most powerful "sound laser," emitting particles of sound instead of light. As reported by
-									Business Today, this groundbreaking device, created by researchers at Hunan Normal University,
-									represents a significant advancement in phonon laser technology, offering potential applications in
-									medical imaging, deep-sea exploration, and various scientific fields.
+									{DESCRIPTION}
 								</div>
 							</div>
 							<div className='flex-1'></div>
 							<div className='flex items-center justify-between -mb-2 mt-1 bg-transparent'>
 								<div className='flex w-full items-center justify-between'>
-									<div className='flex gap-1 text-xs'>
-										<div className='flex items-center gap-sm md:gap-0.5 max-w-[100px] light font-sans text-xs font-medium'>
-											<div className='origin-left md:scale-[.85]'>
-												<div className='flex aspect-square shrink-0 items-center justify-center rounded-full h-5 w-5'>
-													<img
-														alt='User avatar'
-														className='h-full w-full rounded-full object-cover'
-														src='https://imagedelivery.net/MPdwyYSWT8IY7lxgN3x3Uw/831bd9b7-78f7-4d06-7380-44809b816500/thumbnail'
-													/>
-												</div>
+									<div className='flex items-center gap-2 max-w-[120px] md:gap-1 font-sans text-textOff dark:text-textOffDark selection:text-textMain dark:selection:text-superDark selection:bg-super/50 dark:selection:bg-superDuper/10 text-xs font-medium'>
+										<div className='origin-left md:scale-[.85]'>
+											<div className='flex aspect-square shrink-0 items-center justify-center rounded-full h-5 w-5'>
+												<img alt='User avatar' className='h-full w-full rounded-full object-cover' src={AUTHOR_IMG} />
 											</div>
-											<span className='truncate'>elymc</span>
 										</div>
+										<span className='truncate'>{AUTHOR_NAME}</span>
 									</div>
 									<div className='flex items-center'>
 										<button
 											aria-label='Save to Bookmarks'
 											type='button'
-											className='-mr-2.5 hover:opacity-100 md:opacity-70 opacity-100 focus:outline-none outline-none outline-transparent transition duration-300 ease-in-out font-sans select-none relative justify-center text-center items-center rounded-full cursor-point active:scale-95 origin-center whitespace-nowrap inline-flex text-sm aspect-square h-8'
+											className='-mr-2.5 hover:opacity-100 md:hover:bg-offsetPlus dark:md:hover:bg-offsetPlusDark text-textOff dark:text-textOffDark md:hover:text-textMain dark:md:hover:text-textMainDark md:opacity-70 opacity-100 focus:outline-none outline-none outline-transparent transition duration-300 ease-in-out font-sans select-none relative justify-center text-center items-center rounded-full cursor-point active:scale-95 origin-center whitespace-nowrap inline-flex text-sm aspect-square h-8'
 											data-state='closed'
 										>
 											<div className='flex items-center min-w-0 justify-center gap-1'>

@@ -1,0 +1,14 @@
+/* Default (light mode) scrollbar styling */
+
+/* For Firefox, light mode */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e0e0dc transparent;
+}
+
+/* For Firefox, dark mode */
+@media (prefers-color-scheme: dark) {
+  .custom-scrollbar {
+    scrollbar-color: #3d3d3b transparent;
+  }
+}

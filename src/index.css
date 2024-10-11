@@ -2,12 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+@font-face {
+  font-family: __fkGroteskNeue_598ab8;
+  src: url("https://pplx-next-static-public.perplexity.ai/_next/static/media/80d90e1e722a80dc-s.p.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: __fkGrotesk_8a67e8;
+  src: url("https://pplx-next-static-public.perplexity.ai/_next/static/media/3c0a20a48548ae37-s.p.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: __berkeleyMono_1826c3;
+  src: url("https://pplx-next-static-public.perplexity.ai/_next/static/media/b06d54d0a237533a-s.p.woff2") format("woff2");
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
   width: 100%;
 }
