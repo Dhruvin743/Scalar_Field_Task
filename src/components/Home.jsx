@@ -29,7 +29,7 @@ function Home() {
 			leftArrow.current.classList.add("md:block");
 		}
 
-		if (scrollLeft >= maxscrollLeft - 1) {
+		if (scrollLeft >= maxscrollLeft - 10) {
 			rightArrow.current.classList.add("md:hidden");
 			rightArrow.current.classList.remove("md:block");
 		} else {
