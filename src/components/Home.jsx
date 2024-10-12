@@ -205,7 +205,7 @@ function Home() {
 															focusable='false'
 															data-prefix='far'
 															data-icon='star'
-															className='w-[.875em] h-[1em] delay-200'
+															className='w-[.875em] h-[1em]'
 															role='img'
 															xmlns='http://www.w3.org/2000/svg'
 															viewBox='0 0 576 512'
