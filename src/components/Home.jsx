@@ -39,7 +39,6 @@ function Home() {
 	}
 
 	function btnClickHandle(e) {
-		console.log(spanBtnTag.current === e.currentTarget);
 		if (spanBtnTag.current !== e.currentTarget) {
 			spanBtnTag.current.classList.add("hover:opacity-50");
 			spanBtnTag.current.classList.remove("text-super", "dark:text-superDark");
