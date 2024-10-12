@@ -31,6 +31,7 @@ export default {
 			},
 			spacing: {
 				threadWidth: "1100px",
+				mobileNavHeight: "calc(64px + env(safe-area-inset-bottom, 0))",
 			},
 		},
 	},

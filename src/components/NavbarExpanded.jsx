@@ -85,49 +85,49 @@ function NavbarExpanded({ setNavbar, navbar }) {
 						</button>
 					</div>
 					<div className={`${navbar ? "flex" : "hidden"} grow justify-center items-center`}>
-						<span className='w-10'>
+						<span className='w-10 hover:scale-105 transition-all duration-300 ease-in-out group'>
 							<svg viewBox='0 0 101 116' stroke='none' fill='none' xmlns='http://www.w3.org/2000/svg'>
 								<path
-									class='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
+									className='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
 									d='M86.4325 6.53418L50.4634 36.9696H86.4325V6.53418Z'
-									stroke-width='5.53371'
-									stroke-miterlimit='10'
+									strokeWidth='5.53371'
+									strokeMiterlimit='10'
 								></path>
 								<path
 									d='M50.4625 36.9696L17.2603 6.53418V36.9696H50.4625Z'
-									class='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
-									stroke-width='5.53371'
-									stroke-miterlimit='10'
+									className='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
+									strokeWidth='5.53371'
+									strokeMiterlimit='10'
 								></path>
 								<path
 									d='M50.4634 1L50.4634 114.441'
-									class='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
-									stroke-width='5.53371'
-									stroke-miterlimit='10'
+									className='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
+									strokeWidth='5.53371'
+									strokeMiterlimit='10'
 								></path>
 								<path
 									d='M83.6656 70.172L50.4634 36.9697V79.3026L83.6656 108.908V70.172Z'
-									class='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
-									stroke-width='5.53371'
-									stroke-miterlimit='10'
+									className='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
+									strokeWidth='5.53371'
+									strokeMiterlimit='10'
 								></path>
 								<path
 									d='M17.2603 70.172L50.4625 36.9697V78.4497L17.2603 108.908V70.172Z'
-									class='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
-									stroke-width='5.53371'
-									stroke-miterlimit='10'
+									className='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
+									strokeWidth='5.53371'
+									strokeMiterlimit='10'
 								></path>
 								<path
 									d='M3.42627 36.9697V81.2394H17.2605V70.172L50.4628 36.9697H3.42627Z'
-									class='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
-									stroke-width='5.53371'
-									stroke-miterlimit='10'
+									className='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
+									strokeWidth='5.53371'
+									strokeMiterlimit='10'
 								></path>
 								<path
 									d='M50.4634 36.9697L83.6656 70.172V81.2394H97.4999V36.9697L50.4634 36.9697Z'
-									class='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
-									stroke-width='5.53371'
-									stroke-miterlimit='10'
+									className='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
+									strokeWidth='5.53371'
+									strokeMiterlimit='10'
 								></path>
 							</svg>
 						</span>
@@ -156,7 +156,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 								focusable='false'
 								data-prefix='far'
 								data-icon='plus'
-								class='w-[1.25em] h-[1em]'
+								className='w-[1.25em] h-[1em]'
 								role='img'
 								xmlns='http://www.w3.org/2000/svg'
 								viewBox='0 0 448 512'
@@ -294,7 +294,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 									></path>
 								</svg>
 							</label>
-							<div class='absolute right-0 h-full w-[3px] rounded-l-sm bg-textMain dark:bg-textMainDark'></div>
+							<div className='absolute right-0 h-full w-[3px] rounded-l-sm bg-textMain dark:bg-textMainDark'></div>
 						</div>
 						<div className='w-full h-10 flex justify-center relative text-textOff dark:text-textOffDark md:hover:text-textMain dark:md:hover:text-textMainDark md:hover:bg-offsetPlus md:hover:dark:bg-offsetPlusDark duration-300'>
 							<input

@@ -9,10 +9,10 @@ function NewsCard({
 	AUTHOR_NAME = "author",
 }) {
 	return (
-		<div className={`${bigCard ? "col-span-3" : "col-span-1"}`}>
-			<a className='block h-full outline-none' href='/page/china-has-the-most-powerful-la-18f6BgzXSUyzWSmGigD6CA'>
-				<div className='h-full rounded-lg duration-150 hover:opacity-90 bg-offset dark:bg-offsetDark md:hover:-translate-y-px'>
-					<div className=' flex h-full flex-col items-center'>
+		<div className={`w-full ${bigCard ? "md:col-span-3" : "md:col-span-1"}`}>
+			<div className='w-full cursor-pointer hover:-translate-y-px'>
+				<div className='h-full rounded-lg duration-150 hover:opacity-90 dark:shadow-lg hover:dark:shadow-xl active:scale-95 bg-offset dark:bg-offsetDark'>
+					<div className='flex h-full flex-col items-center'>
 						<div
 							className={`flex w-full shrink-0 overflow-hidden rounded-t-lg ${
 								bigCard ? "md:aspect-[1036/350]" : "md:aspect-[3/2]"
@@ -83,7 +83,7 @@ function NewsCard({
 						</div>
 					</div>
 				</div>
-			</a>
+			</div>
 		</div>
 	);
 }

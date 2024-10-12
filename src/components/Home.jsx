@@ -14,19 +14,41 @@ function Home() {
 	const rightArrow = useRef(null);
 
 	useEffect(() => {
-		const scrollLeft = categoryDiv.current.scrollLeft;
-		const maxscrollLeft = categoryDiv.current.scrollWidth - categoryDiv.current.clientWidht;
-
-		if (scrollLeft === 0) {
-			leftArrow.current.style.display;
-		}
+		console.log(categoryDiv.current.clientWidth);
+		console.log(categoryDiv.current.scrollWidth);
+		console.log(categoryDiv.current.scrollLeft);
+		checkArrow();
 	}, []);
 
-	// function handleCategoryChange(e) {
-	// 	const btnList = document.querySelectorAll("input[name=category]");
-	// 	console.log(...btnList.values());
-	// 	btnList[1].classList.add;
-	// }
+	function checkArrow() {
+		const scrollLeft = categoryDiv.current.scrollLeft;
+		const maxscrollLeft = categoryDiv.current.scrollWidth - categoryDiv.current.clientWidth;
+
+		// console.log(scrollLeft + "scroleft");
+
+		if (scrollLeft < 1) {
+			leftArrow.current.classList.add("md:hidden");
+			leftArrow.current.classList.remove("md:block");
+		} else {
+			leftArrow.current.classList.remove("md:hidden");
+			leftArrow.current.classList.add("md:block");
+		}
+
+		console.log(scrollLeft >= maxscrollLeft);
+		if (scrollLeft >= maxscrollLeft - 1) {
+			rightArrow.current.classList.add("md:hidden");
+			rightArrow.current.classList.remove("md:block");
+		} else {
+			rightArrow.current.classList.remove("md:hidden");
+			rightArrow.current.classList.add("md:block");
+		}
+	}
+
+	function handleCategoryChange(e) {
+		const btnList = document.querySelectorAll("input[name=category]");
+		console.log(...btnList.values());
+		btnList[1].classList.add;
+	}
 
 	function btnClickHandle(e) {
 		console.log(spanBtnTag.current === e.currentTarget);
@@ -42,7 +64,7 @@ function Home() {
 	}
 
 	return (
-		<div className='flex w-full h-full min-h-screen bg-offset dark:bg-offsetDark'>
+		<div className='flex w-full max-w-full h-full min-h-screen bg-offset dark:bg-offsetDark'>
 			<div
 				className={`${
 					navbar ? "w-[90px]" : "w-[220px]"
@@ -59,26 +81,22 @@ function Home() {
 					</div>
 				</div>
 			</div>
-			<div className='h-auto flex-1 lg:p-2 lg:pl-0 flex'>
-				<div className='h-full w-full  bg-background dark:bg-backgroundDark md:border md:border-borderMain/50 md:dark:border-borderMainDark/50 md:rounded-t-md'>
+			<div className='w-full grow h-auto lg:p-2 lg:pl-0 flex'>
+				<div className='h-full w-full relative bg-background dark:bg-backgroundDark md:border md:border-borderMain/50 md:dark:border-borderMainDark/50 md:rounded-t-md'>
 					<div className='w-full h-full flex flex-col items-center justify-center'>
-						{/* <div className='w-full h-10 border-b-2 border-b-amber-900 bg-amber-100'></div>
-						<div className='w-full grow bg-orange-600'>
-							<div className='w-full h-full mx-auto max-w-screen-md px-4 bg-slate-500'></div>
-						</div> */}
 						<div className='w-full flex h-16 md:h-[70px] shrink-0 justify-center border-b border-b-borderMain/50 dark:border-b-borderMainDark/50 bg-transparent'>
 							<div
 								className={`flex w-full items-center justify-between px-4 duration-150 md:px-8 ${
-									expand ? "max-w-screen-md" : "max-w-threadWidth"
+									expand ? "md:max-w-screen-md" : "md:max-w-threadWidth"
 								}`}
 							>
-								<h1 className='flex items-center gap-2 font-display text-2xl md:text-3xl text-textMain dark:text-textMainDark'>
+								<h1 className='flex h-max items-center gap-2 font-display text-2xl md:text-3xl text-textMain dark:text-textMainDark'>
 									<svg
 										aria-hidden='true'
 										focusable='false'
 										data-prefix='fak'
 										data-icon='discover'
-										className='w-8'
+										className='w-[1.25em] h-[1em] origin-center scale-[.9]'
 										role='img'
 										xmlns='http://www.w3.org/2000/svg'
 										viewBox='0 0 640 512'
@@ -94,47 +112,43 @@ function Home() {
 							<div className='mr-4 flex items-center md:hidden'>
 								<button
 									type='button'
-									className='bg-amber-300 text-slate-700 focus:outline-none outline-none outline-transparent transition duration-300 ease-in-out font-sans select-none relative justify-center text-center items-center rounded-full cursor-point active:scale-95 origin-center whitespace-nowrap inline-flex text-sm aspect-square h-8'
+									className='bg-offsetPlus dark:bg-offsetPlusDark  text-textMain dark:text-textMainDark md:hover:text-textOff dark:md:hover:text-textOffDark focus:outline-none outline-none transition duration-300 ease-in-out select-none justify-center items-center rounded-full active:scale-95 origin-center flex text-sm aspect-square h-8'
 									data-state='closed'
 								>
-									<div className='flex items-center min-w-0 justify-center gap-1'>
-										<svg
-											aria-hidden='true'
-											focusable='false'
-											data-prefix='far'
-											data-icon='sliders'
-											className='w-4'
-											role='img'
-											xmlns='http://www.w3.org/2000/svg'
-											viewBox='0 0 512 512'
-										>
-											<path
-												fill='currentColor'
-												d='M0 416c0 13.3 10.7 24 24 24l59.7 0c10.2 32.5 40.5 56 76.3 56s66.1-23.5 76.3-56L488 440c13.3 0 24-10.7 24-24s-10.7-24-24-24l-251.7 0c-10.2-32.5-40.5-56-76.3-56s-66.1 23.5-76.3 56L24 392c-13.3 0-24 10.7-24 24zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-35.8 0-66.1 23.5-76.3 56L24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l251.7 0c10.2 32.5 40.5 56 76.3 56s66.1-23.5 76.3-56l59.7 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-59.7 0c-10.2-32.5-40.5-56-76.3-56zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm76.3-56C258.1 39.5 227.8 16 192 16s-66.1 23.5-76.3 56L24 72C10.7 72 0 82.7 0 96s10.7 24 24 24l91.7 0c10.2 32.5 40.5 56 76.3 56s66.1-23.5 76.3-56L488 120c13.3 0 24-10.7 24-24s-10.7-24-24-24L268.3 72z'
-											></path>
-										</svg>
-									</div>
+									<svg
+										aria-hidden='true'
+										focusable='false'
+										data-prefix='far'
+										data-icon='sliders'
+										className='w-[1.25em] h-[1em]'
+										role='img'
+										xmlns='http://www.w3.org/2000/svg'
+										viewBox='0 0 512 512'
+									>
+										<path
+											fill='currentColor'
+											d='M0 416c0 13.3 10.7 24 24 24l59.7 0c10.2 32.5 40.5 56 76.3 56s66.1-23.5 76.3-56L488 440c13.3 0 24-10.7 24-24s-10.7-24-24-24l-251.7 0c-10.2-32.5-40.5-56-76.3-56s-66.1 23.5-76.3 56L24 392c-13.3 0-24 10.7-24 24zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-35.8 0-66.1 23.5-76.3 56L24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l251.7 0c10.2 32.5 40.5 56 76.3 56s66.1-23.5 76.3-56l59.7 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-59.7 0c-10.2-32.5-40.5-56-76.3-56zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm76.3-56C258.1 39.5 227.8 16 192 16s-66.1 23.5-76.3 56L24 72C10.7 72 0 82.7 0 96s10.7 24 24 24l91.7 0c10.2 32.5 40.5 56 76.3 56s66.1-23.5 76.3-56L488 120c13.3 0 24-10.7 24-24s-10.7-24-24-24L268.3 72z'
+										></path>
+									</svg>
 								</button>
 							</div>
 						</div>
-						{/* <div className='w-full h-16 shrink-0 bg-blue-800'>
-							<div className='w-full h-full px-8 max-w-screen-md flex justify-between items-center  text-white'>
-								<span className=''>Discover</span>
-							</div>
-						</div> */}
-						<div className={`grow ${expand ? "max-w-screen-md" : "max-w-threadWidth"} h-full mx-auto px-4 md:px-8`}>
-							<div className='h-full w-full flex md:grid gap-12 mb-12 grid-cols-12'>
-								<div className={`col-span-12 ${expand ? "md:col-span-12" : "md:col-span-8"}`}>
+						<div
+							className={`w-full ${expand ? "md:max-w-screen-md" : "md:max-w-threadWidth"} h-full mx-auto px-4 md:px-8`}
+						>
+							<div className='h-full grow flex md:grid gap-12 mb-12 grid-cols-12'>
+								<div className={`w-full col-span-12 ${expand ? "" : "md:col-span-8"}`}>
 									<div
-										className={`sticky w-full top-0 h-16 z-20 mt-1 flex items-center justify-between gap-4 backdrop-blur-lg bg-transparent`}
+										className={`sticky w-full top-0 h-16 z-20 flex items-center justify-between gap-4 backdrop-blur-lg bg-transparent `}
 									>
-										<div className='relative py-2 flex flex-1 items-center justify-between gap-4 z-[2] bg-transparent overflow-y-auto'>
+										<div className='relative py-2 flex flex-1 items-center justify-between gap-4 z-[2] bg-transparent overflow-x-auto'>
 											<button
 												ref={leftArrow}
 												type='button'
-												className='shadow-sm left-0 z-30 md:block focus:outline-none outline-none outline-transparent transition duration-300 ease-in-out select-none absolute rounded-full cursor-point active:scale-95 bg-background dark:bg-backgroundDark text-textOff dark:text-textOffDark border border-borderMain/50 dark:border-borderMainDark/50 md:hover:text-textMain md:hover:dark:text-textMainDark text-sm aspect-square h-8'
+												className='shadow-sm hidden left-0 z-30 focus:outline-none outline-none outline-transparent transition duration-300 ease-in-out select-none absolute rounded-full cursor-point active:scale-95 bg-background dark:bg-backgroundDark text-textOff dark:text-textOffDark border border-borderMain/50 dark:border-borderMainDark/50 md:hover:text-textMain md:hover:dark:text-textMainDark text-sm aspect-square h-8'
 												onClick={() => {
-													categoryDiv.current.scrollBy({ left: -500, behavior: "smooth" });
+													categoryDiv.current.scrollBy({ left: -250, behavior: "smooth" });
+													// checkArrow();
 												}}
 											>
 												<div className='flex items-center min-w-0 justify-center aspect-square'>
@@ -158,9 +172,10 @@ function Home() {
 											<button
 												ref={rightArrow}
 												type='button'
-												className='shadow-sm right-0 z-30 md:block focus:outline-none outline-none outline-transparent transition duration-300 ease-in-out select-none absolute rounded-full cursor-point active:scale-95 bg-background dark:bg-backgroundDark text-textOff dark:text-textOffDark border border-borderMain/50 dark:border-borderMainDark/50 md:hover:text-textMain md:hover:dark:text-textMainDark text-sm aspect-square h-8'
+												className='shadow-sm hidden right-0 z-30 focus:outline-none outline-none outline-transparent transition duration-300 ease-in-out select-none absolute rounded-full cursor-point active:scale-95 bg-background dark:bg-backgroundDark text-textOff dark:text-textOffDark border border-borderMain/50 dark:border-borderMainDark/50 md:hover:text-textMain md:hover:dark:text-textMainDark text-sm aspect-square h-8'
 												onClick={() => {
-													categoryDiv.current.scrollBy({ left: 500, behavior: "smooth" });
+													categoryDiv.current.scrollBy({ left: 250, behavior: "smooth" });
+													// checkArrow();
 												}}
 											>
 												<div className='flex items-center min-w-0 justify-center aspect-square'>
@@ -183,13 +198,12 @@ function Home() {
 											</button>
 											<div
 												ref={categoryDiv}
-												className='w-auto z-0 -mx-4 flex min-w-0 snap-x snap-mandatory overflow-y-auto text-textMain dark:text-textMainDark duration-1000 md:mx-0'
+												className='relative w-full z-0 -mx-4 flex min-w-0 snap-x snap-mandatory overflow-x-scroll text-textMain dark:text-textMainDark duration-1000 md:mx-0'
 												style={{
-													transform: "none",
 													scrollbarWidth: "none",
-													transformOrigin: "50% 50% 0px",
 													// maskImage: "linear-gradient(to left, transparent 0%, black 10%)",
 												}}
+												onScroll={checkArrow}
 											>
 												<div className='w-4 shrink-0 snap-start md:hidden'></div>
 												<div className='relative isolate flex min-w-16 shrink-0 select-none snap-start items-center justify-center'>
@@ -345,7 +359,11 @@ function Home() {
 												<div className='w-4 shrink-0 snap-start md:hidden'></div>
 											</div>
 										</div>
-										<div className='h-full py-2 hidden md:flex items-center justify-center z-[2]'>
+										<div
+											className={`h-full py-2 hidden ${
+												expand ? "md:flex" : "md:hidden"
+											} items-center justify-center z-[2]`}
+										>
 											<button
 												type='button'
 												className='flex justify-center items-center rounded-full text-textMain dark:text-textMainDark select-none outline-none focus:outline-none hover:text-textOff dark:hover:text-textOffDark bg-offsetPlus dark:bg-offsetPlusDark text-sm aspect-square h-8 transition duration-300 ease-in-out'
@@ -369,7 +387,7 @@ function Home() {
 										</div>
 										<div className='absolute -inset-x-0 inset-y-0 -translate-y-1 bg-background dark:bg-backgroundDark opacity-90 z-[1]'></div>
 									</div>
-									<div className='flex flex-col md:grid gap-4 grid-cols-3'>
+									<div className='grow flex flex-col md:grid gap-4 grid-cols-3'>
 										{proxy_data.slice(0, 16).map((v, i) => {
 											return (
 												<NewsCard
@@ -402,7 +420,6 @@ function Home() {
 													type='button'
 													className='aspect-square flex justify-center items-center h-6 rounded-full md:hover:bg-offsetPlus dark:md:hover:bg-offsetPlusDark md:hover:text-textMain dark:md:hover:text-textMainDark text-textOff dark:text-textOffDark text-xs font-medium transition duration-300 ease-in-out'
 													onClick={() => {
-														console.log("clickcdsdsd");
 														setExpand(!expand);
 													}}
 												>
@@ -571,6 +588,118 @@ function Home() {
 									</div>
 								</button>
 							</span>
+						</div>
+					</div>
+					<div className='fixed bottom-0 w-full h-mobileNavHeight bg-offset dark:bg-offsetDark flex md:hidden px-2'>
+						<div className='flex-1 flex gap-x-4 h-14 text-textOff dark:text-textOffDark select-none'>
+							<div className='w-full flex items-center justify-center relative overflow-clip'>
+								<input type='radio' name='mnav' id='mbtn1' className='hidden absolute peer' />
+								<label
+									htmlFor='mbtn1'
+									className='peer-checked:text-textMain cursor-pointer dark:peer-checked:text-textMainDark'
+								>
+									<div class='flex items-center min-w-0 flex-col h-max justify-center w-full gap-2 text-sm font-medium'>
+										<svg
+											aria-hidden='true'
+											focusable='false'
+											data-prefix='fak'
+											data-icon='search'
+											class='w-[1.25em] h-[1em] text-lg'
+											role='img'
+											xmlns='http://www.w3.org/2000/svg'
+											viewBox='0 0 512 512'
+										>
+											<path
+												fill='currentColor'
+												d='M236.8 288a51.2 51.2 0 1 0 0-102.4 51.2 51.2 0 1 0 0 102.4zM434.9 398.7c-10.9 13.1-23 25.3-36.2 36.2l68.5 68.5 36.2-36.2-68.5-68.5zM236.8 32a204.8 204.8 0 1 1 0 409.6 204.8 204.8 0 1 1 0-409.6zm0 51.2a153.6 153.6 0 1 0 0 307.2 153.6 153.6 0 1 0 0-307.2z'
+											></path>
+										</svg>
+										<div class='text-align-center relative truncate leading-none'>Home</div>
+									</div>
+								</label>
+								<div className='absolute hidden peer-checked:block inset-0 h-[3px] rounded-full top-0 left-0 right-0 bg-textMain dark:bg-textMainDark'></div>
+							</div>
+							<div className='w-full flex items-center justify-center relative overflow-clip'>
+								<input type='radio' name='mnav' id='mbtn2' defaultChecked={true} className='hidden absolute peer' />
+								<label
+									htmlFor='mbtn2'
+									className='peer-checked:text-textMain cursor-pointer dark:peer-checked:text-textMainDark'
+								>
+									<div class='flex items-center min-w-0 flex-col h-max justify-center w-full gap-2 text-sm font-medium'>
+										<svg
+											aria-hidden='true'
+											focusable='false'
+											data-prefix='fak'
+											data-icon='discover'
+											class='w-[1.25em] h-[1em] text-lg'
+											role='img'
+											xmlns='http://www.w3.org/2000/svg'
+											viewBox='0 0 640 512'
+										>
+											<path
+												fill='currentColor'
+												d='M320 51.2c6.4 0 19.2 17.3 30.4 51.2c4.8 14.1 9 31.4 12.5 51.2c2.9 15.4 5.1 32.3 6.4 51.2c1.3 16 1.9 33 1.9 51.2h51.2c0-17-.6-34.2-1.9-51.2c-1.3-17.3-3.2-34.6-5.8-51.2c-2.9-17.9-6.4-35.2-10.9-51.2c-3.8-13.8-8-26.6-13.1-38.4C374.1 25.3 350.7 0 320 0s-54.1 25.3-70.7 64c-5.1 11.5-9.3 24.6-13.1 38.4h53.8c11.2-33.9 23.7-51.2 30.4-51.2H320zm0 409.6c-6.4 0-19.2-17.3-30.4-51.2c-4.8-14.1-9-31.4-12.5-51.2c-2.9-15.4-5.1-32.3-6.4-51.2c-1.3-16-1.9-33-1.9-51.2H217.6c0 17 .6 34.2 1.9 51.2c1.3 17.3 3.2 34.6 5.8 51.2c2.9 17.9 6.4 35.2 10.9 51.2c3.8 13.8 8 26.6 13.1 38.4c16.6 38.7 40 64 70.7 64s54.1-25.3 70.7-64c5.1-11.5 9.3-24.6 13.1-38.4H350.1c-11.2 33.9-23.7 51.2-30.4 51.2h.3zM550.4 145.3c-7.4-15-16-29.4-26.2-42.9c-25-33-57.6-59.8-95.4-77.8C395.8 9 359 0 320 0s-75.8 9-108.8 24.6c-37.8 17.9-70.4 44.8-95.4 77.8c-9.9 13.4-18.9 27.5-26.2 42.9C73.3 178.9 64 216.3 64 256s9.3 77.1 25.6 110.7c7.4 15 16 29.4 26.2 42.9c25 33 57.6 59.8 95.4 77.8C244.2 503 281 512 320 512s75.8-9 108.8-24.6c37.8-17.9 70.4-44.8 95.4-77.8c9.9-13.4 18.9-27.5 26.2-42.9c16.3-33.6 25.6-71 25.6-110.7s-9.3-77.1-25.6-110.7zM390.7 448c-22.1 8.3-45.8 12.8-70.7 12.8s-48.6-4.8-70.7-12.8c-23.7-9-45.4-21.8-64.3-38.4c-1-.6-1.6-1.6-2.6-2.2c-15.7-14.1-29.1-30.7-39.7-49h30.4c-2.2-16.6-4.2-33.9-5.1-51.2H121.9c-4.2-16.3-6.7-33.6-6.7-51.2s2.6-34.9 6.7-51.2H320V153.6H143c10.6-18.2 24-34.9 39.7-49c1-.6 1.6-1.6 2.6-2.2C204.2 86.1 225.6 73 249.6 64c22.1-8.3 45.8-12.8 70.7-12.8s48.6 4.8 70.7 12.8c23.7 9 45.4 21.8 64.3 38.4c1 .6 1.6 1.6 2.6 2.2c15.7 14.1 29.1 30.7 39.7 49H467.2c2.2 16.6 4.2 33.9 5.1 51.2h46.1c4.2 16.3 6.7 33.6 6.7 51.2s-2.6 34.9-6.7 51.2H320.3v51.2h177c-10.6 18.2-24 34.9-39.7 49c-1 .6-1.6 1.6-2.6 2.2c-18.9 16.3-40.3 29.4-64.3 38.4z'
+											></path>
+										</svg>
+										<div class='text-align-center relative truncate leading-none'>Discover</div>
+									</div>
+								</label>
+								<div className='absolute hidden peer-checked:block inset-0 h-[3px] rounded-full top-0 left-0 right-0 bg-textMain dark:bg-textMainDark'></div>
+							</div>
+							<div className='w-full flex items-center justify-center relative overflow-clip'>
+								<input type='radio' name='mnav' id='mbtn3' className='hidden absolute peer' />
+								<label
+									htmlFor='mbtn3'
+									className='peer-checked:text-textMain cursor-pointer dark:peer-checked:text-textMainDark'
+								>
+									<div class='flex items-center min-w-0 flex-col h-max justify-center w-full gap-2 text-sm font-medium'>
+										<svg
+											aria-hidden='true'
+											focusable='false'
+											data-prefix='fak'
+											data-icon='library'
+											class='w-[1.25em] h-[1em] text-lg'
+											role='img'
+											xmlns='http://www.w3.org/2000/svg'
+											viewBox='0 0 512 512'
+										>
+											<path
+												fill='currentColor'
+												d='M512 281.6H460.8V256C460.8 143 369 51.2 256 51.2S51.2 143 51.2 256v25.6H0V256C0 114.9 114.9 0 256 0S512 114.9 512 256v25.6zm-102.4 0H358.4V256c0-56.3-46.1-102.4-102.4-102.4s-102.4 46.1-102.4 102.4v25.6H102.4V256c0-84.8 68.8-153.6 153.6-153.6s153.6 68.8 153.6 153.6v25.6zm-51.2 51.2c-41.9 0-79 20.5-102.4 51.8c-23.4-31.4-60.5-51.8-102.4-51.8H0V384H153.6c42.2 0 76.8 34.6 76.8 76.8v25.6h51.2V460.8c0-42.2 34.6-76.8 76.8-76.8H512V332.8H358.4zM256 307.2a51.2 51.2 0 1 0 0-102.4 51.2 51.2 0 1 0 0 102.4z'
+											></path>
+										</svg>
+										<div class='text-align-center relative truncate leading-none'>Library</div>
+									</div>
+								</label>
+								<div className='absolute hidden peer-checked:block inset-0 h-[3px] rounded-full top-0 left-0 right-0 bg-textMain dark:bg-textMainDark'></div>
+							</div>
+							<div className='w-full flex items-center justify-center relative overflow-clip'>
+								<input type='radio' name='mnav' id='mbtn4' className='hidden absolute peer' />
+								<label
+									htmlFor='mbtn4'
+									className='peer-checked:text-textMain cursor-pointer dark:peer-checked:text-textMainDark'
+								>
+									<div class='flex items-center min-w-0 flex-col h-max justify-center w-full gap-2 text-sm font-medium'>
+										<svg
+											aria-hidden='true'
+											focusable='false'
+											data-prefix='far'
+											data-icon='right-to-bracket'
+											class='w-[1.25em] h-[1em] text-lg'
+											role='img'
+											xmlns='http://www.w3.org/2000/svg'
+											viewBox='0 0 512 512'
+										>
+											<path
+												fill='currentColor'
+												d='M192 365.8L302 256 192 146.2l0 53.8c0 13.3-10.7 24-24 24L48 224l0 64 120 0c13.3 0 24 10.7 24 24l0 53.8zM352 256c0 11.5-4.6 22.5-12.7 30.6L223.2 402.4c-8.7 8.7-20.5 13.6-32.8 13.6c-25.6 0-46.4-20.8-46.4-46.4l0-33.6-96 0c-26.5 0-48-21.5-48-48l0-64c0-26.5 21.5-48 48-48l96 0 0-33.6c0-25.6 20.8-46.4 46.4-46.4c12.3 0 24.1 4.9 32.8 13.6L339.3 225.4c8.1 8.1 12.7 19.1 12.7 30.6zm-8 176l80 0c22.1 0 40-17.9 40-40l0-272c0-22.1-17.9-40-40-40l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l80 0c48.6 0 88 39.4 88 88l0 272c0 48.6-39.4 88-88 88l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z'
+											></path>
+										</svg>
+										<div class='text-align-center relative truncate leading-none'>Sign in</div>
+									</div>
+								</label>
+								<div className='absolute hidden peer-checked:block inset-0 h-[3px] rounded-full top-0 left-0 right-0 bg-textMain dark:bg-textMainDark'></div>
+							</div>
 						</div>
 					</div>
 				</div>
