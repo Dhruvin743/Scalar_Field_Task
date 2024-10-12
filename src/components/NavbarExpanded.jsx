@@ -294,7 +294,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 									></path>
 								</svg>
 							</label>
-							<div className='absolute right-0 h-full w-[3px] rounded-l-sm bg-textMain dark:bg-textMainDark'></div>
+							<div className='absolute hidden peer-checked:block right-0 h-full w-[3px] rounded-l-sm bg-textMain dark:bg-textMainDark'></div>
 						</div>
 						<div className='w-full h-10 flex justify-center relative text-textOff dark:text-textOffDark md:hover:text-textMain dark:md:hover:text-textMainDark md:hover:bg-offsetPlus md:hover:dark:bg-offsetPlusDark duration-300'>
 							<input
@@ -325,6 +325,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 									></path>
 								</svg>
 							</label>
+							<div className='absolute hidden peer-checked:block right-0 h-full w-[3px] rounded-l-sm bg-textMain dark:bg-textMainDark'></div>
 						</div>
 						<div className='w-full h-10 flex justify-center relative text-textOff dark:text-textOffDark md:hover:text-textMain dark:md:hover:text-textMainDark md:hover:bg-offsetPlus md:hover:dark:bg-offsetPlusDark duration-300'>
 							<input type='radio' name='newnav' id='nbtn3' value={"nbtn3"} className='peer appearance-none absolute' />
@@ -348,6 +349,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 									></path>
 								</svg>
 							</label>
+							<div className='absolute hidden peer-checked:block right-0 h-full w-[3px] rounded-l-sm bg-textMain dark:bg-textMainDark'></div>
 						</div>
 						<div className='w-full h-10 flex justify-center relative text-textOff dark:text-textOffDark md:hover:text-textMain dark:md:hover:text-textMainDark md:hover:bg-offsetPlus md:hover:dark:bg-offsetPlusDark duration-300'>
 							<input type='radio' name='newnav' id='nbtn4' value={"nbtn4"} className='peer appearance-none absolute' />
@@ -371,6 +373,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 									></path>
 								</svg>
 							</label>
+							<div className='absolute hidden peer-checked:block right-0 h-full w-[3px] rounded-l-sm bg-textMain dark:bg-textMainDark'></div>
 						</div>
 					</div>
 				</div>
