@@ -7,7 +7,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 				<div className='flex'>
 					<div className={`${navbar ? "hidden" : "flex mb-4"} grow justify-between items-center`}>
 						<span>
-							<a aria-label='Perplexity' className='block ml-1 pt-1 pl-4 pr-2 ' href='/'>
+							<div className='block ml-1 pt-1 pl-4 pr-2 cursor-pointer'>
 								<div className='w-[140px] group'>
 									<svg viewBox='0 0 400 91' fill='none' xmlns='http://www.w3.org/2000/svg'>
 										<path
@@ -58,7 +58,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 										></path>
 									</svg>
 								</div>
-							</a>
+							</div>
 						</span>
 						<button
 							type='button'
@@ -85,7 +85,7 @@ function NavbarExpanded({ setNavbar, navbar }) {
 						</button>
 					</div>
 					<div className={`${navbar ? "flex" : "hidden"} grow justify-center items-center`}>
-						<span className='w-10 hover:scale-105 transition-all duration-300 ease-in-out group'>
+						<span className='w-10 hover:scale-105 transition-all duration-300 ease-in-out group cursor-pointer'>
 							<svg viewBox='0 0 101 116' stroke='none' fill='none' xmlns='http://www.w3.org/2000/svg'>
 								<path
 									className='stroke-textMain dark:stroke-textMainDark group-hover:stroke-superDuper transition-colors duration-300'
